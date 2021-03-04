@@ -1,0 +1,12 @@
+
+label.cst.validation.required
+O campo :campo é obrigatório.
+
+label.cst.validation.maxlength
+O campo :campo aceita até :limit caracteres.
+
+label.cst.validation.number
+O campo :campo aceita somente números.
+
+label.cst.validation.enum
+O campo :campo precisa estar entre as opções :options.
