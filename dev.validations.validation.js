@@ -19,7 +19,7 @@
       var container = data;
 
       for (var position in keys) {
-        if (container[keys[position]]) {
+        if (container[keys[position]] || container[keys[position]] === 0) {
           container = container[keys[position]];
           if (keys.length <= position + 1) {
             result = execute({ data: container, rules: rules[key], result: result, fieldname: keys[position] });
@@ -62,7 +62,7 @@
   }
 
   function required(result, data, fieldname) {
-    if (!data || data === '') {
+    if ((!data || data === '') && data !== 0) {
       return {
         isDataValid: false,
         message: result.message + L10n.translate("label.cst.validation.required").replace(":campo", fieldname) + ' '
