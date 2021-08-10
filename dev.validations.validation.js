@@ -50,6 +50,10 @@
         result = required(result, data, fieldname);
       } else if (arrayRules[key] == "number") {
         result = number(result, data, fieldname);
+      } else if (arrayRules[key] == "array") {
+        result = array(result, data, fieldname);
+      } else if (arrayRules[key] == "string") {
+        result = string(result, data, fieldname);
       } else if (validateIfIsMaxLength(arrayRules[key])) {
         var limit = null;
         limit = getLimitFromRule(arrayRules[key]);
@@ -66,6 +70,17 @@
       return {
         isDataValid: false,
         message: result.message + L10n.translate("label.cst.validation.required").replace(":campo", fieldname) + ' '
+      }
+    }
+
+    return result;
+  }
+
+  function string(result, data, fieldname) {
+    if (data && Object.prototype.toString.call(data) != "[object String]") {
+      return {
+        isDataValid: false,
+        message: result.message + L10n.translate("label.cst.validation.string").replace(":campo", fieldname) + ' '
       }
     }
 
@@ -90,6 +105,17 @@
         message: result.message + L10n.translate("label.cst.validation.number").replace(":campo", fieldname) + ' '
       }
     }
+    return result;
+  }
+
+  function array(result, data, fieldname) {
+    if (data && Object.prototype.toString.call(data) != "[object java.util.ArrayList]") {
+      return {
+        isDataValid: false,
+        message: result.message + L10n.translate("label.cst.validation.array").replace(":campo", fieldname) + ' '
+      }
+    }
+
     return result;
   }
 
