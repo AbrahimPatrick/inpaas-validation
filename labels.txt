@@ -10,3 +10,6 @@ O campo :campo aceita somente números.
 
 label.cst.validation.enum
 O campo :campo precisa estar entre as opções :options.
+
+label.cst.validation.string
+O campo :campo aceita somente string.
