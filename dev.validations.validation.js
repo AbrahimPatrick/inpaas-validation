@@ -29,7 +29,7 @@
             result = {
               isDataValid: false,
               message: result.message + L10n.translate("label.cst.validation.required").replace(":campo", keys[position]) + ' '
-            }
+            };
           }
         }
       }
@@ -70,7 +70,7 @@
       return {
         isDataValid: false,
         message: result.message + L10n.translate("label.cst.validation.required").replace(":campo", fieldname) + ' '
-      }
+      };
     }
 
     return result;
@@ -81,7 +81,7 @@
       return {
         isDataValid: false,
         message: result.message + L10n.translate("label.cst.validation.string").replace(":campo", fieldname) + ' '
-      }
+      };
     }
 
     return result;
@@ -92,7 +92,7 @@
       return {
         isDataValid: false,
         message: result.message + L10n.translate("label.cst.validation.maxlength").replace(":campo", fieldname).replace(":limit", limit) + ' '
-      }
+      };
     }
 
     return result;
@@ -103,7 +103,7 @@
       return {
         isDataValid: false,
         message: result.message + L10n.translate("label.cst.validation.number").replace(":campo", fieldname) + ' '
-      }
+      };
     }
     return result;
   }
@@ -113,7 +113,7 @@
       return {
         isDataValid: false,
         message: result.message + L10n.translate("label.cst.validation.array").replace(":campo", fieldname) + ' '
-      }
+      };
     }
 
     return result;
@@ -142,7 +142,7 @@
         return {
           isDataValid: false,
           message: result.message + L10n.translate("label.cst.validation.enum").replace(":campo", fieldname).replace(":options", formatedOptions) + ' '
-        }
+        };
       }
     }
 
