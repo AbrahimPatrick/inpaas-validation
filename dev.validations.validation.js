@@ -109,7 +109,7 @@
   }
 
   function array(result, data, fieldname) {
-    if (data && Object.prototype.toString.call(data) != "[object java.util.ArrayList]") {
+    if (data && !(Object.prototype.toString.call(data) == "[object java.util.ArrayList]" || Object.prototype.toString.call(data) == "[object Array]")) {
       return {
         isDataValid: false,
         message: result.message + L10n.translate("label.cst.validation.array").replace(":campo", fieldname) + ' '

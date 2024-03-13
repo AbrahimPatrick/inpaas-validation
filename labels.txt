@@ -13,3 +13,6 @@ O campo :campo precisa estar entre as opções :options.
 
 label.cst.validation.string
 O campo :campo aceita somente string.
+
+label.cst.validation.array
+O campo :campo precisa ser do tipo array.
