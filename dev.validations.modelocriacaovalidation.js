@@ -18,7 +18,7 @@
 
   function getRules() {
     return {
-      "ticket": "required|object",
+      "ticket": "required|object|rename:Objeto ticket",
       "ticket.sitecategory": "required|number|maxLength:20",
       "ticket.casedescription": "string|maxLength:20000",
       "ticket.caseoriginid": "required|number|maxLength:20",

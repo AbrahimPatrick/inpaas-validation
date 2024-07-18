@@ -22,19 +22,39 @@
         if (container[keys[position]] || container[keys[position]] === 0 || container[keys[position]] === false) {
           container = container[keys[position]];
           if (keys.length <= position + 1) {
-            result = execute({ data: container, rules: rules[key], result: result, fieldname: keys[position] });
+            var rename = getRenameValue(container);
+            result = execute({ data: container, rules: rules[key], result: result, fieldname: rename || keys[position] });
           }
         } else {
           if (keys.length <= position + 1 && rules[key].indexOf("required") > -1) {
+            var rename = getRenameValue(rules[key]);
             result = {
               isDataValid: false,
-              message: result.message + L10n.translate("label.cst.validation.required").replace(":campo", keys[position]) + ' '
+              message: result.message + L10n.translate("label.cst.validation.required").replace(":campo", rename || keys[position]) + ' '
             };
           }
         }
       }
     }
     return result;
+  }
+  
+  function getRenameValue(str) {
+      if(!str) return;
+      var renameIndex = str.indexOf("rename:");
+
+      if (renameIndex === -1) {
+          return null; // Não existe 'rename' na string
+      }
+
+      var start = renameIndex + "rename:".length;
+      var end = str.indexOf("|", start);
+
+      if (end === -1) {
+          end = str.length;
+      }
+
+      return str.substring(start, end);
   }
 
   function execute(parameters) {
@@ -67,6 +87,7 @@
 
   function required(result, data, fieldname) {
     if ((!data || data === '') && data !== 0 && data !== false) {
+      
       return {
         isDataValid: false,
         message: result.message + L10n.translate("label.cst.validation.required").replace(":campo", fieldname) + ' '
