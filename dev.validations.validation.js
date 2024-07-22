@@ -1,7 +1,7 @@
 /*
  * ValidationBusinessDelegate
  * dev.validations.validation
- * 
+ * ESPEC DELIVERY-31721
  */
 (function ValidationBusinessDelegate(scope) {
   'use strict';
@@ -24,7 +24,7 @@
         if (container[keys[position]] || container[keys[position]] === 0 || container[keys[position]] === false) {
           container = container[keys[position]];
           if (keys.length <= position + 1) {
-            rename = getRenameValue(container);
+            rename = getRenameValue(rules[key]);
             result = execute({ data: container, rules: rules[key], result: result, fieldname: rename || keys[position] });
           }
         } else {
@@ -42,6 +42,8 @@
   }
 
   function getRenameValue(str) {
+
+    logging.warn(str);
     if (!str) return;
     var renameIndex = str.indexOf("rename:");
 
